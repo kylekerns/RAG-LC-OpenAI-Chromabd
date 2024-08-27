@@ -41,7 +41,7 @@ def chunk_data(data, chunk_size=256, chunk_overlap=20):
 
 
 def create_embeddings(chunks):
-    embeddings = OpenAIEmbeddings(model="text-embedding-3-small", dimensions=1536)
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-large", dimensions=3072)
     vector_store = Chroma.from_documents(chunks, embeddings)
 
     return vector_store
@@ -57,7 +57,7 @@ def create_conversational_retrieval_chain(vector_store):
         HumanMessagePromptTemplate,
     )
 
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+    llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.8)
 
     retriever = vector_store.as_retriever(
         search_type="similarity", search_kwargs={"k": 5}
@@ -106,10 +106,10 @@ def ask_question(q, chain):
 def calculate_embedding_cost(texts):
     import tiktoken
 
-    enc = tiktoken.encoding_for_model("text-embedding-3-small")
+    enc = tiktoken.encoding_for_model("text-embedding-3-large")
     total_tokens = sum([len(enc.encode(page.page_content)) for page in texts])
     # https://openai.com/pricing
-    return total_tokens, total_tokens / 1000 * 0.00002
+    return total_tokens, total_tokens / 1000 * 0.00013
 
 
 def clear_history():
