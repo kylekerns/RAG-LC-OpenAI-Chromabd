@@ -2,13 +2,15 @@
 
 RAG (Retrieve-Answer-Generate) is an interactive application that combines the power of Langchain, OpenAI, Chroma, and Streamlit to provide a sophisticated document analysis and question-answering system. It supports multiple document formats, chunks data for optimised processing, and leverages embeddings for precise information retrieval.
 
-See the RAG application in action:
+See the RAG application in action using the Financial Stability Report - June 2024 by the Bank of England:
 
 ![RAG Interactive Demo](rag_demo.gif)
 
+[Link to the Financial Report - June 2024](https://www.bankofengland.co.uk/financial-stability-report/2024/june-2024)
+
 ## Features
 
-- **Document Support**: Load and process documents in PDF, DOCX, or TXT formats.
+- **Document Support**: Load and process documents in multiple formats.
 - **Data Processing**: Efficiently chunk documents and calculate embedding costs.
 - **Interactive UI**: Designed with Streamlit for an intuitive and engaging user experience.
 - **Conversational Interface**: Employs an AI-powered conversational retrieval chain, enhancing the system's ability to provide accurate answers based on the document content.
